@@ -84,12 +84,14 @@ obj-y += mtk_dp_hdcp1x.o \
 	mtk_dp_hdcp2.o
 endif
 
-#ifeq ($(CONFIG_TRUSTONIC_TEE_SUPPORT),m)
+ifeq ($(CONFIG_TRUSTONIC_TEE_SUPPORT),m)
 #obj-$(CONFIG_DEVICE_MODULES_DRM_MEDIATEK) += ca/
-#ccflags-y += -DDPTX_HDCP_ENABLE
-#mediatek-drm-y += mtk_dp_hdcp1x.o \
-#	mtk_dp_hdcp2.o
-#endif
+include $(DEVICE_MODULES_PATH)/drivers/tee/gud/Makefile.include
+mediatek-drm-y += ca/tlcDpHdcp.o
+ccflags-y += -DDPTX_HDCP_ENABLE
+mediatek-drm-y += mtk_dp_hdcp1x.o \
+	mtk_dp_hdcp2.o
+endif
 
 mediatek-drm-$(CONFIG_DRM_FBDEV_EMULATION) += mtk_drm_fbdev.o
 
