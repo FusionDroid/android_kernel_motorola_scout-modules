@@ -63,6 +63,8 @@ int tee_addDevice(uint32_t version)
 	ret = TEEC_InitializeContext(NULL, &sContext);
 	if (ret != TEEC_SUCCESS) {
 		TLCERR("ret = 0x%x", ret);
+		if (ret == 0xffff0008)
+			TLCERR("TEE_ERROR_NOT_SUPPORTED, Plz check your load");
 		return ret;
 	}
 
@@ -102,7 +104,7 @@ int tee_addDevice(uint32_t version)
 		needLoadKey;
 
 	memset(&op, 0, sizeof(struct TEEC_Operation));
-	op.paramTypes = TEEC_PARAM_TYPES(TEEC_MEMREF_PARTIAL_INPUT, TEEC_NONE,
+	op.paramTypes = TEEC_PARAM_TYPES(TEEC_MEMREF_PARTIAL_INOUT, TEEC_NONE,
 		TEEC_NONE, TEEC_NONE);
 	op.params[0].memref.parent = &sSharedMemoryMain;
 	op.params[0].memref.size = TCI_LENGTH;
