@@ -615,6 +615,7 @@ struct mtk_panel_params {
 	int panel_pcd_reg_mask;
 
 	int ovl_wcg_for_moto_colormode;
+	bool hs_read_bta_with_hsclk;
 };
 
 struct mtk_panel_ext {
