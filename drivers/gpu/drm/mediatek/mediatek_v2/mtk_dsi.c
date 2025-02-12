@@ -6987,11 +6987,6 @@ void mipi_dsi_dcs_write_gce2(struct mtk_dsi *dsi, struct cmdq_pkt *dummy,
 		cmdq_pkt_write(handle, dsi->ddp_comp.cmdq_base,
 			dsi->ddp_comp.regs_pa + DSI_START, 0x0, ~0);
 
-		if (priv && priv->data && (priv->data->mmsys_id == MMSYS_MT6897) &&
-			!(dsi->mode_flags & MIPI_DSI_MODE_LPM) &&
-			(msg.type != MIPI_DSI_DCS_LONG_WRITE))
-				cmdq_pkt_sleep(handle, CMDQ_US_TO_TICK(1), mtk_get_gpr(&dsi->ddp_comp, handle));
-
 		mtk_dsi_poll_for_idle(dsi, handle);
 		mtk_dsi_power_keep_gce(dsi, handle, false);
 	} else {
