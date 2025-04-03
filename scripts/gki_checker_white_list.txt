@@ -112,6 +112,7 @@ f security/selinux/avc.c
 f security/selinux/include/avc.h
 f include/linux/dma-buf.h
 f drivers/dma-buf/dma-buf.c
+s add_taint_module
 s asix_adjust_link
 s asix_driver
 s asix_driver_exit
@@ -298,6 +299,7 @@ s __ksymtab_mtk_mutex_remove_comp
 s __ksymtab_mtk_mutex_unprepare
 s lenovo_info
 s linux_banner
+s load_module
 s mct_info
 s __mdiobus_read
 s __mdiobus_write
