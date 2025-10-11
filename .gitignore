@@ -179,3 +179,6 @@ sphinx_*/
 /kernel/configs/debug-mgk_64_k61-cybert.config
 /kernel/configs/moto-mgk_64_k61-nice.config
 /kernel/configs/debug-mgk_64_k61-nice.config
+
+# Keep dummy fw_sample.i for focaltech touch
+!drivers/input/touchscreen/ft3683g/include/firmware/fw_sample.i
